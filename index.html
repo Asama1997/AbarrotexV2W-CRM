@@ -38,6 +38,8 @@
     <div class="loader"><img src="images/loading.gif" alt="animation" /></div>
   </div>
   <!-- end loader -->
+  <!-- Bot -->
+  <script src="//code.tidio.co/wtvyuutbcmi3zl5j7u4yywgul6xdfzgq.js" async></script>
   <!-- header -->
   <header>
     <!-- header inner -->
@@ -100,22 +102,6 @@
                       <form class="Vegetable">
                         <input class="Vegetable_fom" placeholder="Abarrotes" type="text" name="Abarrote">
                         <button class="Search_btn">Buscar</button>
-                        <p>¿De donde nos visitas?</p>
-                        <input class="Vegetable_fom" placeholder="Estado/Pais" type="text" name="state">
-                        <button type="submit" class="Search_btn" id="Send_q" name="send_Q">Enviar</button>              
-                        <script>
-                          fetch ("https://api.monday.com/v2", {
-                          method: 'post',
-                          headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization' : 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI3OTc5Mjg4MywiYWFpIjoxMSwidWlkIjo0ODM0MzU0MywiaWFkIjoiMjAyMy0wOS0wNVQxOTozMzozNy4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTg2Mjk2OTAsInJnbiI6InVzZTEifQ.94UuxSxVMhLXQQAQSIWVvMQU7ROA2pmyzqM7rqOqLXY',
-                            'API-Version' : '2023-04'
-                          },
-                          body: JSON.stringify({
-                            'query' : 'query{boards (limit:1) {state} }'
-                            })
-                          });
-                        </script>
                       </form>
                       <a href="#">Contactanos</a> <a href="#">Productos</a>
                     </div>
