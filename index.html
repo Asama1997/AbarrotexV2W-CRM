@@ -37,7 +37,6 @@
   <div class="loader_bg">
     <div class="loader"><img src="images/loading.gif" alt="animation" /></div>
   </div>
-  
   <!-- end loader -->
   <!-- header -->
   <header>
@@ -99,9 +98,25 @@
                       <h1>Distrubuidor de productos de abarrotes</h1>
                       <p>Abarrotex es un distribuidor de productos de abarrotes el cuanl brinda el servicio en linea. Con el objetivo de que personas no tienen tiempo para comprar su mandado, nosostros te lo hacemos llegar </p>
                       <form class="Vegetable">
-                <input class="Vegetable_fom" placeholder="Abarrotes" type="text" name="Abarrote">
-                <button class="Search_btn">Buscar</button>
-              </form>
+                        <input class="Vegetable_fom" placeholder="Abarrotes" type="text" name="Abarrote">
+                        <button class="Search_btn">Buscar</button>
+                        <p>¿De donde nos visitas?</p>
+                        <input class="Vegetable_fom" placeholder="Estado/Pais" type="text" name="state">
+                        <button type="submit" class="Search_btn" id="Send_q" name="send_Q">Enviar</button>              
+                        <script>
+                          fetch ("https://api.monday.com/v2", {
+                          method: 'post',
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization' : 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI3OTc5Mjg4MywiYWFpIjoxMSwidWlkIjo0ODM0MzU0MywiaWFkIjoiMjAyMy0wOS0wNVQxOTozMzozNy4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTg2Mjk2OTAsInJnbiI6InVzZTEifQ.94UuxSxVMhLXQQAQSIWVvMQU7ROA2pmyzqM7rqOqLXY',
+                            'API-Version' : '2023-04'
+                          },
+                          body: JSON.stringify({
+                            'query' : 'query{boards (limit:1) {state} }'
+                            })
+                          });
+                        </script>
+                      </form>
                       <a href="#">Contactanos</a> <a href="#">Productos</a>
                     </div>
                   </div>
@@ -545,28 +560,28 @@
           <script src="wish.js"></script>
 
           <script>
-// This example adds a marker to indicate the position of Bondi Beach in Sydney,
-// Australia.
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
-    center: {
-      lat: 21.8853,
-      lng: 102.2916
-    },
-  });
+            // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+            // Australia.
+            function initMap() {
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: {
+                  lat: 21.8853,
+                  lng: 102.2916
+                },
+              });
 
-  var image = 'images/maps-and-flags.png';
-  var beachMarker = new google.maps.Marker({
-    position: {
-      lat: 21.8853,
-      lng: 102.2916
-    },
-    map: map,
-    icon: image
-  });
-}
-</script>
+              var image = 'images/maps-and-flags.png';
+              var beachMarker = new google.maps.Marker({
+                position: {
+                  lat: 21.8853,
+                  lng: 102.2916
+                },
+                map: map,
+                icon: image
+              });
+            }
+          </script>
 <!-- google map js -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
 <!-- end google map js -->
