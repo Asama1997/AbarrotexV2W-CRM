@@ -124,10 +124,19 @@
                       <span>Bienvenido a Abarrotex</span>
                       <h1>Tienda de Abarrotes</h1>
                       <p>Tu mejor aliado a la hora de comprar la despensa. Actualmente operamos en la ciudad de Aguascalientes</p>
-                      <form class="Vegetable">
-                <input class="Vegetable_fom" placeholder="Abarrotes" type="text" name="Abarrote">
-                <button class="Search_btn">Buscar</button>
-              </form>
+                      
+                      <!-- Modificacion de busqueda-->
+
+                      <form id="searchForm" class="Vegetable">
+                        <input id="searchInput" class="Vegetable_fom" placeholder="Abarrotes" type="text" name="Abarrote">
+                        <button class="Search_btn">Buscar</button>
+                    </form>
+                    <!--Contenedor para mostrar las busquedas-->
+                    <div id="searchResults"></div>
+
+
+                     <!--Termina modificacion-->
+
                       <a href="#">Contactanos</a> <a href="#">Abarrotes</a>
                     </div>
                   </div>
@@ -158,8 +167,6 @@
 </div>
 </header>
 
-
-
 <!-- about  -->
 <div id="about" class="about">
   <div class="container-fluid">
@@ -180,13 +187,8 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
-
-
-
-
 
 <div id="vegetable" class="vegetable">
   <div class="container">
@@ -579,6 +581,41 @@
     $("#cookiesModal").modal('hide');
   };
 </script><script src="//code.tidio.co/wtvyuutbcmi3zl5j7u4yywgul6xdfzgq.js" async></script>
-</body>
 
+<!--  evita que la página se recargue. Luego, toma el valor del campo de búsqueda, lo procesa y muestra los resultados en el contenedor -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const searchForm = document.getElementById("searchForm");
+      const searchInput = document.getElementById("searchInput");
+      const searchResultsContainer = document.getElementById("searchResults");
+  
+      searchForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const searchTerm = searchInput.value.trim().toLowerCase();
+  
+          const productCards = document.querySelectorAll(".card"); // Seleccionar todas las tarjetas de productos
+  
+          let matchingProducts = [];
+  
+          productCards.forEach((card) => {
+              const title = card.querySelector(".card-title").textContent.toLowerCase();
+              const description = card.querySelector(".card-text").textContent.toLowerCase();
+  
+              if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                  matchingProducts.push(card.outerHTML);
+              }
+          });
+  
+          if (matchingProducts.length > 0) {
+              const searchResultsHTML = matchingProducts.join('');
+              searchResultsContainer.innerHTML = searchResultsHTML;
+          } else {
+              searchResultsContainer.innerHTML = "<p>No se encontraron productos.</p>";
+          }
+      });
+  });
+  </script>
+  
+
+</body>
 </html>
